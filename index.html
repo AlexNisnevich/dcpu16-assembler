@@ -9,11 +9,48 @@
 		
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="assembler.js"></script>
+		
+		<style type="text/css">
+			body {
+				width: 90%; 
+				margin: 20px auto;
+			}
+			
+			#inputContainer {
+				float: left; 
+				width: 45%;
+			}
+			
+			#input {
+				width: 100%; 
+				height: 500px;
+			}
+			
+			#outputContainer {
+				float: right; 
+				width: 42%;
+			}
+			
+			#assembleButton {
+				float: left;
+				margin: 200px 4%;
+			}
+			
+			#output {
+				width: 100%; 
+				height: 460px; 
+				border: 1px solid gray; 
+				padding: 20px; 
+				font-family: monospace;
+			}
+			
+			
+		</style>
 	</head>
-	<body style="width: 90%; margin: 20px auto;">
+	<body>
 		<div id="container">
-			<div id="inputContainer" style="float: left; width: 48%;">
-				<textarea id="input" style="width: 100%; height: 500px;">
+			<div id="inputContainer">
+				<textarea id="input">
 ; (Notch's example)
 
 ; Try some basic stuff
@@ -46,10 +83,10 @@
 ;      but my assembler doesn't support short form labels yet.     
 				</textarea>
 			</div>
-			<div id="outputContainer" style="float: right; width: 48%;">
-				<div id="output" style="width: 100%; height: 460px; border: 1px solid gray; padding: 20px; font-family: monospace;"></div>
+			<button id="assembleButton" onclick="$('#output').html(assemble($('#input').val()))">Assemble</button>
+			<div id="outputContainer">
+				<div id="output"></div>
 			</div>
 		</div>
-		<button onclick="$('#output').html(assemble($('#input').val()))" style="clear: both; margin-top: 20px;">Assemble</button>
 	</body>
 </html>
