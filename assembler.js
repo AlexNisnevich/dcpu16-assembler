@@ -1,4 +1,12 @@
 
+function zeroFill(number, width) {
+    width -= number.toString().length;
+    if (width > 0) {
+        return new Array(width + (/\./.test(number) ? 2 : 1)).join('0') + number;
+    }
+    return number;
+}
+
 function assemble(input) {
   var registers = ['A', 'B', 'C', 'X', 'Y', 'Z', 'I', 'J'];
   var special_registers = ['POP', 'PEEK', 'PUSH', 'SP', 'PC', 'O']; // start at 0x18
@@ -119,12 +127,4 @@ function assemble(input) {
           return zeroFill(b.toString(16), 4);
       }).join(' ');
   }).join('<br>');
-  
-  function zeroFill(number, width) {
-      width -= number.toString().length;
-      if (width > 0) {
-          return new Array(width + (/\./.test(number) ? 2 : 1)).join('0') + number;
-      }
-      return number;
-  }
 }

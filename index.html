@@ -90,7 +90,7 @@
               SET [0x1000], 0x20       ; 7de1 1000 0020
               SUB A, [0x1000]          ; 7803 1000
               IFN A, 0x10              ; c00d 
-              SET PC, crash         ; 7dc1 001a [*]
+              SET PC, crash            ; 7dc1 001a [*]
               
 ; Do a loopy thing
               SET I, 10                ; a861
@@ -98,7 +98,7 @@
 :loop         SET [0x2000+I], [A]      ; 2161 2000
               SUB I, 1                 ; 8463
               IFN I, 0                 ; 806d
-              SET PC, loop          ; 7dc1 000d [*]
+              SET PC, loop             ; 7dc1 000d [*]
 
 ; Call a subroutine
               SET X, 0x4               ; 9031
@@ -116,7 +116,7 @@
 				</textarea>
 			</div>
 			<div id="buttonContainer">
-				<button id="assembleButton" onclick="$('#output').html(assemble($('#input').val()))">Assemble</button>
+				<button id="assembleButton" onclick="$('#output').html(assemble(input.getValue()))">Assemble</button>
 			</div>
 			<div id="outputContainer">
 				<span class="paneTitle">Output</span>
@@ -124,7 +124,7 @@
 			</div>
 		</div>
 		<script type="text/javascript">
-			var myCodeMirror = CodeMirror.fromTextArea($('#input')[0], {
+			var input = CodeMirror.fromTextArea($('#input')[0], {
 				lineNumbers: true,
 				lineWrapping: true
 			});
